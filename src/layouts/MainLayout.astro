@@ -1,0 +1,60 @@
+---
+// src/layouts/MainLayout.astro
+import '../styles/global.css';
+const { title } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-slate-50 text-slate-900 font-sans">
+  <nav class="sticky top-0 z-40 w-full backdrop-blur border-b border-slate-200 bg-white/75">
+      <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+          <a href="/" class="text-sm font-extrabold tracking-wide text-slate-900 hover:text-indigo-600 transition">
+              Last Minuters
+          </a>
+
+          <div class="flex items-center gap-6 text-sm font-medium">
+              <a href="/about" class="hover:text-indigo-600 transition">About</a>
+
+              <details class="group relative">
+                  <summary class="cursor-pointer hover:text-indigo-600 transition list-none">
+                      Initiation
+                  </summary>
+                  <div class="absolute left-0 mt-2 w-64 rounded-xl border border-slate-200 bg-white shadow-lg p-2">
+                      <a href="/initiation/bigger-picture" class="block px-3 py-2 rounded-lg hover:bg-slate-50">Look at the bigger picture</a>
+                      <a href="/initiation/fishbone-analysis" class="block px-3 py-2 rounded-lg hover:bg-slate-50">Fishbone analyses</a>
+                      <a href="/initiation/alternative-solutions" class="block px-3 py-2 rounded-lg hover:bg-slate-50">Alternative solutions</a>
+                      <a href="/initiation/project-output" class="block px-3 py-2 rounded-lg hover:bg-slate-50">Project output</a>
+                      <a href="/initiation/justification" class="block px-3 py-2 rounded-lg hover:bg-slate-50">Justification</a>
+                  </div>
+              </details>
+
+              <details class="group relative">
+                  <summary class="cursor-pointer hover:text-indigo-600 transition list-none">
+                      Planning
+                  </summary>
+                  <div class="absolute left-0 mt-2 w-64 rounded-xl border border-slate-200 bg-white shadow-lg p-2">
+                      <a href="/planning/main-goal" class="block px-3 py-2 rounded-lg hover:bg-slate-50">Main goal</a>
+                      <a href="/planning/stakeholders" class="block px-3 py-2 rounded-lg hover:bg-slate-50">Stakeholders</a>
+                      <a href="/planning/wbs" class="block px-3 py-2 rounded-lg hover:bg-slate-50">Work breakdown structure</a>
+                      <a href="/planning/schedule" class="block px-3 py-2 rounded-lg hover:bg-slate-50">Schedule</a>
+                      <a href="/planning/responsibilities" class="block px-3 py-2 rounded-lg hover:bg-slate-50">Responsibilities</a>
+                      <a href="/planning/resources-budget" class="block px-3 py-2 rounded-lg hover:bg-slate-50">Resources and budget</a>
+                  </div>
+              </details>
+              <a href="/deliverables" class="hover:text-indigo-600 transition">Deliverables</a>
+              <a href="/downloads" class="hover:text-indigo-600 transition">Downloads</a>
+          </div>
+      </div>
+  </nav>
+
+    <main class="max-w-5xl mx-auto px-4 py-12">
+      <slot /> </main>
+
+    <footer class="border-t border-slate-200 mt-20 py-10 text-center text-slate-500 text-sm">
+      <p>&copy; 2026 Last Minuters. Built with Astro & Tailwind.</p>
+    </footer>
+  </body>
+</html>
