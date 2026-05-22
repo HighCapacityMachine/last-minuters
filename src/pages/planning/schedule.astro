@@ -1,3 +1,144 @@
 ---
+import MainLayout from '../../layouts/MainLayout.astro';
 
+const weeks = Array.from({ length: 26 }, (_, i) => i + 1);
+
+type Task = {
+    name: string;
+    start: number;
+    end: number;
+    color: string;
+};
+
+type Phase = {
+    title: string;
+    tasks: Task[];
+};
+
+const phases: Phase[] = [
+    {
+        title: "Phase One: Initiation",
+        tasks: [
+            { name: "1.1 Project Charter & Scope analysis", start: 1, end: 1, color: "bg-yellow-400" },
+            { name: "1.2 Schedule, Budget Baseline", start: 2, end: 2, color: "bg-yellow-400" },
+            { name: "1.3 Stakeholder Communication Plan", start: 3, end: 3, color: "bg-yellow-400" },
+            { name: "1.4 Risk Management Plan", start: 4, end: 4, color: "bg-yellow-400" },
+        ],
+    },
+    {
+        title: "Phase Two: Planning (and procurement)",
+        tasks: [
+            { name: "2.1 Vandalism Report", start: 2, end: 4, color: "bg-red-500" },
+            { name: "2.2 Material benchmarking", start: 2, end: 4, color: "bg-purple-500" },
+            { name: "2.3 Cost savings estimation", start: 5, end: 5, color: "bg-yellow-400" },
+            { name: "2.4 Compliance & regulatory analysis", start: 6, end: 6, color: "bg-blue-500" },
+            { name: "2.5 Procurement Preparation", start: 7, end: 7, color: "bg-sky-400" },
+            { name: "2.6 Supplier tendering and evaluation", start: 8, end: 8, color: "bg-yellow-400" },
+            { name: "2.7 Legal procedures & signing", start: 9, end: 9, color: "bg-yellow-400" },
+        ],
+    },
+    {
+        title: "Phase Three: Execution",
+        tasks: [
+            { name: "3.1 Design the device", start: 10, end: 10, color: "bg-green-500" },
+            { name: "3.2 Create CAD model", start: 11, end: 11, color: "bg-green-500" },
+            { name: "3.3 Structural verification", start: 12, end: 12, color: "bg-green-500" },
+            { name: "3.4 Fluid flow testing", start: 13, end: 13, color: "bg-green-500" },
+            { name: "3.5 Prototype verification", start: 14, end: 15, color: "bg-green-500" },
+            { name: "3.6 Final technical drawings", start: 16, end: 17, color: "bg-blue-500" },
+        ],
+    },
+    {
+        title: "Phase Four: Control",
+        tasks: [
+            { name: "4.1 Controlled environment testing", start: 16, end: 17, color: "bg-green-500" },
+            { name: "4.2 In-location testing", start: 18, end: 19, color: "bg-green-500" },
+            { name: "4.3 Monitoring vandalism", start: 21, end: 25, color: "bg-purple-500" },
+        ],
+    },
+    {
+        title: "Phase Five: Closeout",
+        tasks: [
+            { name: "5.1 Final prototype delivery", start: 20, end: 20, color: "bg-blue-500" },
+            { name: "5.2 Documentation package", start: 21, end: 22, color: "bg-blue-500" },
+            { name: "5.3 Lessons learned", start: 26, end: 26, color: "bg-yellow-400" },
+        ],
+    },
+];
 ---
+
+<MainLayout title="Gantt Chart">
+    <section class="space-y-10">
+        <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600 mb-3">
+                Planning
+            </p>
+
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+                Gantt Chart
+            </h1>
+
+            <p class="text-lg text-slate-600">
+                Project Title: Using cheaper materials (to deal with vandalism)
+            </p>
+
+            <p class="text-sm text-slate-500">
+                Start Week: Jun 1, 2026 • Duration: 6 months (26 weeks)
+            </p>
+        </header>
+
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div class="min-w-[1400px]">
+                <table class="w-full border-collapse text-sm text-left">
+                    <thead>
+                    <tr class="bg-slate-50 text-slate-700">
+                        <th class="w-[320px] border-b border-slate-200 px-4 py-3 font-semibold">
+                            Task
+                        </th>
+
+                        {weeks.map((w) => (
+                                <th class="border-b border-slate-200 px-2 py-3 text-center font-semibold">
+                                    {w}
+                                </th>
+                        ))}
+                    </tr>
+                    </thead>
+
+                    <tbody class="text-slate-700">
+                    {phases.map((phase) => (
+                            <>
+                                <!-- Phase row -->
+                                <tr class="bg-slate-100">
+                                    <td class="border-b border-slate-200 px-4 py-3 font-bold text-slate-900">
+                                        {phase.title}
+                                    </td>
+                                    <td class="border-b border-slate-200"></td>
+                                </tr>
+
+                                <!-- Task rows -->
+                                {phase.tasks.map((task) => (
+                                        <tr class="hover:bg-slate-50 transition-colors">
+                                            <td class="border-b border-slate-200 px-4 py-3">
+                                                {task.name}
+                                            </td>
+
+                                            {weeks.map((week) => (
+                                                    <td
+                                                            class:list={[
+                                                                "h-10 border-b border-slate-200 text-center transition-colors",
+                                                                week >= task.start &&
+                                                                week <= task.end &&
+                                                                task.color,
+                                                            ]}
+                                                    ></td>
+                                            ))}
+                                        </tr>
+                                ))}
+                            </>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</MainLayout>
