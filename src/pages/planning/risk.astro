@@ -1,0 +1,157 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const risks = [
+    { name: "Breakdowns during operation", impact: "Components may fail during or after deployment, increasing maintenance frequency and operational costs", level: "High", strategy: "Mitigation", action: "Perform preventive maintenance and material testing" },
+    { name: "Continued vandalism during/after deployment", impact: "Product may continue to be damaged in operational phase, increasing replacement costs and downtime", level: "High", strategy: "Mitigation", action: "Choose an alternative or improve protective design" },
+    { name: "Material failure in operation", impact: "Components may crack or degrade during real-world use, leading to reduced lifespan and performance issues", level: "High", strategy: "Mitigation", action: "Conduct laboratory and mechanical stress testing" },
+    { name: "Project delays", impact: "Delays in delivery or implementation may lead to extended execution phase and increased overall costs", level: "Medium", strategy: "Mitigation", action: "Create detailed schedule and monitor all milestones weekly" },
+    { name: "Budget overrun", impact: "Costs may exceed planned budget during execution or post-implementation adjustments", level: "Medium", strategy: "Mitigation", action: "Develop a detailed budget plan and track all expenses" },
+    { name: "Insufficient workforce allocation", impact: "Resource shortages during implementation may reduce efficiency or cause delays in project delivery", level: "Medium", strategy: "Mitigation", action: "Reallocate team members or assign additional support staff" },
+    { name: "Unexpected long-term costs", impact: "Maintenance and replacement costs may increase after deployment due to material or design limitations", level: "Medium", strategy: "Mitigation", action: "Perform lifecycle cost analysis before implementation" },
+    { name: "Environmental non-compliance during use", impact: "Materials may negatively impact water quality during long-term operation", level: "Medium", strategy: "Avoidance", action: "Use certified water-safe materials" },
+    { name: "Reputational risk after implementation", impact: "Failures or inefficiencies may negatively affect Rand Water reputation post-deployment", level: "Medium", strategy: "Mitigation", action: "Start pilot testing before full deployment" },
+    { name: "Procurement delays affecting execution", impact: "Supplier delays may impact project timelines and continuation of implementation", level: "Medium", strategy: "Mitigation", action: "Use multiple suppliers and early procurement planning" },
+    { name: "Community resistance during rollout", impact: "Users may reject or distrust the system during or after implementation", level: "Medium", strategy: "Mitigation", action: "Improve stakeholder communication and public awareness" },
+    { name: "Regulatory non-compliance discovered later", impact: "Product may fail to meet regulatory standards during audits or post-deployment checks", level: "Low", strategy: "Avoidance", action: "Verify compliance requirements before prototype approval" },
+    { name: "Functional failure in real conditions", impact: "System may not perform as expected during field use or post-project evaluation", level: "Low", strategy: "Mitigation", action: "Conduct prototype verification and field testing" },
+    { name: "Negative media or public perception", impact: "Issues during or after deployment may lead to reputational damage through media coverage", level: "Low", strategy: "Mitigation", action: "Maintain proactive communication and monitoring" }
+];
+---
+
+<MainLayout title="Risk Management">
+    <section class="space-y-12">
+        <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600 mb-3">
+                Planning
+            </p>
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+                Risk Management
+            </h1>
+            <p class="text-lg text-slate-600">
+                Identifying, analyzing, and detailing strategies for project risks. The matrix highlights
+                the probability against the potential impact on the project.
+            </p>
+        </header>
+
+        <!-- Risk Matrix (Heatmap) -->
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm overflow-x-auto">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">Risk Matrix Map</h2>
+
+            <div class="min-w-[800px] flex">
+                <!-- Y-Axis Label -->
+                <div class="flex flex-col justify-center pr-6 w-12">
+          <span class="transform -rotate-90 origin-center text-sm font-bold tracking-widest text-slate-400 uppercase whitespace-nowrap">
+            Impact
+          </span>
+                </div>
+
+                <div class="flex-1 space-y-4">
+                    <!-- Grid -->
+                    <div class="grid grid-cols-4 gap-2 text-sm">
+                        <!-- Labels top -->
+                        <div></div> <!-- empty corner -->
+                        <div class="text-center font-bold text-slate-500 uppercase pb-2">Low Probability</div>
+                        <div class="text-center font-bold text-slate-500 uppercase pb-2">Medium Probability</div>
+                        <div class="text-center font-bold text-slate-500 uppercase pb-2">High Probability</div>
+
+                        <!-- Row: High Impact -->
+                        <div class="flex items-center justify-end pr-4 font-bold text-slate-500 text-right">High</div>
+                        <div class="bg-amber-100 border border-amber-200 p-4 rounded-xl flex flex-col gap-2">
+                            <span class="rounded bg-white/60 px-2 py-1 leading-snug">Environmental non-compliance</span>
+                            <span class="rounded bg-white/60 px-2 py-1 leading-snug">Community resistance</span>
+                            <span class="rounded bg-white/60 px-2 py-1 leading-snug">Reputational risk</span>
+                        </div>
+                        <div class="bg-orange-100 border border-orange-300 p-4 rounded-xl flex flex-col gap-2">
+                            <span class="rounded bg-white/60 px-2 py-1 leading-snug font-medium">Continued vandalism</span>
+                        </div>
+                        <div class="bg-red-100 border border-red-300 p-4 rounded-xl flex flex-col gap-2">
+                            <span class="rounded bg-white/60 px-2 py-1 leading-snug font-bold text-red-900">Breakdowns during operation</span>
+                        </div>
+
+                        <!-- Row: Medium Impact -->
+                        <div class="flex items-center justify-end pr-4 font-bold text-slate-500 text-right">Medium</div>
+                        <div class="bg-emerald-100 border border-emerald-200 p-4 rounded-xl flex flex-col gap-2">
+                            <span class="rounded bg-white/60 px-2 py-1 leading-snug">Regulatory non-compliance</span>
+                        </div>
+                        <div class="bg-amber-100 border border-amber-200 p-4 rounded-xl flex flex-col gap-2">
+                            <span class="rounded bg-white/60 px-2 py-1 leading-snug">Project delays</span>
+                            <span class="rounded bg-white/60 px-2 py-1 leading-snug">Insufficient workforce</span>
+                            <span class="rounded bg-white/60 px-2 py-1 leading-snug">Procurement delays</span>
+                        </div>
+                        <div class="bg-orange-100 border border-orange-300 p-4 rounded-xl flex flex-col gap-2">
+                            <span class="rounded bg-white/60 px-2 py-1 leading-snug font-medium shadow-sm">Material failure in operation</span>
+                        </div>
+
+                        <!-- Row: Low Impact -->
+                        <div class="flex items-center justify-end pr-4 font-bold text-slate-500 text-right">Low</div>
+                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col gap-2">
+                            <span class="rounded bg-white/60 px-2 py-1 leading-snug text-slate-700">Negative media</span>
+                        </div>
+                        <div class="bg-emerald-100 border border-emerald-200 p-4 rounded-xl flex flex-col gap-2">
+                            <span class="rounded bg-white/60 px-2 py-1 leading-snug">Functional failure</span>
+                        </div>
+                        <div class="bg-amber-100 border border-amber-200 p-4 rounded-xl flex flex-col gap-2">
+                            <span class="rounded bg-white/60 px-2 py-1 leading-snug">Budget overrun</span>
+                            <span class="rounded bg-white/60 px-2 py-1 leading-snug">Unexpected long-term costs</span>
+                        </div>
+                    </div>
+
+                    <!-- X-Axis Label -->
+                    <div class="text-center pt-2">
+                        <span class="text-sm font-bold tracking-widest text-slate-400 uppercase">Probability</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Risk Table -->
+        <div class="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+            <div class="p-6 border-b border-slate-200 bg-slate-50">
+                <h2 class="text-xl font-bold text-slate-900">Risk Log & Response Strategy</h2>
+            </div>
+            <div class="overflow-x-auto min-w-[1000px]">
+                <table class="w-full border-collapse text-left text-sm">
+                    <thead>
+                    <tr class="bg-white text-slate-700 border-b border-slate-200">
+                        <th class="px-4 py-3 font-semibold w-1/5">Risk</th>
+                        <th class="px-4 py-3 font-semibold w-2/5">Consequence / Impact</th>
+                        <th class="px-4 py-3 font-semibold w-[100px]">Level</th>
+                        <th class="px-4 py-3 font-semibold w-[120px]">Strategy</th>
+                        <th class="px-4 py-3 font-semibold">Response Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-slate-700">
+                    {risks.map((r) => {
+                        // Quick badge coloring logic
+              const badgeColors = {
+                            High: 'bg-red-100 text-red-800 border-red-200',
+                            Medium: 'bg-amber-100 text-amber-800 border-amber-200',
+                            Low: 'bg-emerald-100 text-emerald-800 border-emerald-200'
+                        };
+                        const colorClass = badgeColors[r.level as keyof typeof badgeColors] || 'bg-slate-100';
+
+                        return (
+                                <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50">
+                                    <td class="px-4 py-4 font-semibold text-slate-900">{r.name}</td>
+                                    <td class="px-4 py-4 text-slate-600 leading-relaxed">{r.impact}</td>
+                                    <td class="px-4 py-4">
+                    <span class={`rounded-full border px-2.5 py-0.5 text-xs font-bold ${colorClass}`}>
+                      {r.level}
+                    </span>
+                                    </td>
+                                    <td class="px-4 py-4">
+                    <span class="rounded bg-slate-100 border border-slate-200 px-2 py-1 text-xs font-semibold text-slate-600">
+                      {r.strategy}
+                    </span>
+                                    </td>
+                                    <td class="px-4 py-4 text-slate-600">{r.action}</td>
+                                </tr>
+                        );
+                    })}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</MainLayout>
