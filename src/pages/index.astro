@@ -7,6 +7,7 @@ import member1 from '../assets/member_1.jpeg';
 import member2 from '../assets/member_2.jpeg';
 import member3 from '../assets/member_3.jpeg';
 import member4 from '../assets/member_4.jpeg';
+import productImg from '../assets/product.png';
 
 const teamMembers = [
     { name: 'Rapolas Daugelis', role: 'Mechanical Engineer', img: member1 },
@@ -88,7 +89,7 @@ const teamMembers = [
             <div class="relative group">
                 <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
                 <div class="relative h-80 bg-slate-100 rounded-3xl border border-slate-200 flex items-center justify-center overflow-hidden">
-                    <span class="text-slate-400 font-medium">[Data Visualization Image]</span>
+                    <Image src={productImg} alt="Data Visualization" class="w-full h-full object-cover" />
                 </div>
             </div>
         </div>

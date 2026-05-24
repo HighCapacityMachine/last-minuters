@@ -1,14 +1,16 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import { Image } from 'astro:assets';
+import productImg from '../assets/product.png';
 ---
 
 <MainLayout title="About | Project Aether">
-  <section class="relative pt-32 pb-20 overflow-hidden">
-    <div class="absolute -top-24 -left-24 w-96 h-96 bg-indigo-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
-    <div class="absolute top-0 -right-24 w-96 h-96 bg-blue-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
-    <div class="absolute -bottom-24 left-1/2 w-96 h-96 bg-pink-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+    <section class="relative pt-32 pb-20 overflow-hidden">
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-indigo-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+        <div class="absolute top-0 -right-24 w-96 h-96 bg-blue-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-24 left-1/2 w-96 h-96 bg-pink-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
 
-    <div class="relative max-w-5xl mx-auto px-4 text-center">
+        <div class="relative max-w-5xl mx-auto px-4 text-center">
       <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-8">
         <span class="relative flex h-2 w-2">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
@@ -17,70 +19,69 @@ import MainLayout from '../layouts/MainLayout.astro';
         About Our Team
       </span>
 
-      <h1 class="text-5xl md:text-7xl font-black text-slate-900 tracking-tight mb-6">
-        The Last Minuters
-      </h1>
+            <h1 class="text-5xl md:text-7xl font-black text-slate-900 tracking-tight mb-6">
+                The Last Minuters
+            </h1>
 
-      <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-10">
-        We’re a student team focused on practical, low-cost infrastructure solutions.
-        Our 2026 project works with Rand Water to address vandalism affecting water meters.
-      </p>
-    </div>
-  </section>
+            <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-10">
+                We’re a student team focused on practical, low-cost infrastructure solutions.
+                Our 2026 project works with Rand Water to address vandalism affecting water meters.
+            </p>
+        </div>
+    </section>
 
-  <section class="max-w-5xl mx-auto px-4 py-24">
-    <div class="grid md:grid-cols-2 gap-16 items-center">
-      <div>
-        <h2 class="text-3xl font-bold text-slate-900 mb-6 italic">The Challenge</h2>
-        <p class="text-lg text-slate-600 mb-6 leading-relaxed">
-          Rand Water identified a rising vandalism problem: water meters are being stolen
-          because their metal components have resale value. This causes service disruptions,
-          repair costs, and unreliable readings.
-        </p>
-        <div class="space-y-4">
-          <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
-            <div class="bg-indigo-600 text-white p-2 rounded-lg mt-1">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-            </div>
+    <section class="max-w-5xl mx-auto px-4 py-24">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <h4 class="font-bold">Vandalism & Theft</h4>
-              <p class="text-sm text-slate-500">Meter components are targeted due to metal resale value.</p>
+                <h2 class="text-3xl font-bold text-slate-900 mb-6 italic">The Challenge</h2>
+                <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                    Rand Water identified a rising vandalism problem: water meters are being stolen
+                    because their metal components have resale value. This causes service disruptions,
+                    repair costs, and unreliable readings.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                        <div class="bg-indigo-600 text-white p-2 rounded-lg mt-1">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Vandalism & Theft</h4>
+                            <p class="text-sm text-slate-500">Meter components are targeted due to metal resale value.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                <div class="relative h-80 bg-slate-100 rounded-3xl border border-slate-200 flex items-center justify-center overflow-hidden">
+                    <Image src={productImg} alt="Field Research Image" class="w-full h-full object-cover" />
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="relative group">
-        <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-        <div class="relative h-80 bg-slate-100 rounded-3xl border border-slate-200 flex items-center justify-center overflow-hidden">
-          <span class="text-slate-400 font-medium">[Field Research Image]</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="bg-slate-50 py-24">
-    <div class="max-w-5xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-12">Our Solution</h2>
-      <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed mb-10">
-        We reduce theft incentives by replacing metal parts in water meters with
-        durable, non-valuable alternatives. This makes meters less attractive to steal
-        while maintaining reliability and performance.
-      </p>
-      <div class="grid md:grid-cols-3 gap-6 text-left">
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-          <h3 class="font-bold text-slate-900 mb-2">Lower Theft Value</h3>
-          <p class="text-sm text-slate-500">Remove or replace metal parts that are resold.</p>
+    <section class="bg-slate-50 py-24">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-12">Our Solution</h2>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed mb-10">
+                We reduce theft incentives by replacing metal parts in water meters with
+                durable, non-valuable alternatives. This makes meters less attractive to steal
+                while maintaining reliability and performance.
+            </p>
+            <div class="grid md:grid-cols-3 gap-6 text-left">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-slate-900 mb-2">Lower Theft Value</h3>
+                    <p class="text-sm text-slate-500">Remove or replace metal parts that are resold.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-slate-900 mb-2">Reliable Hardware</h3>
+                    <p class="text-sm text-slate-500">Maintain durability and measurement accuracy.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-slate-900 mb-2">Scalable Fix</h3>
+                    <p class="text-sm text-slate-500">Applicable across meter types with minimal changes.</p>
+                </div>
+            </div>
         </div>
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-          <h3 class="font-bold text-slate-900 mb-2">Reliable Hardware</h3>
-          <p class="text-sm text-slate-500">Maintain durability and measurement accuracy.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-          <h3 class="font-bold text-slate-900 mb-2">Scalable Fix</h3>
-          <p class="text-sm text-slate-500">Applicable across meter types with minimal changes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 </MainLayout>
----
