@@ -1,13 +1,12 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import { Image } from 'astro:assets';
+import productImg from '../assets/product.png';
 
-// Note: Astro requires these files to exist in src/assets/ for compilation to work
 import member1 from '../assets/member_1.jpeg';
 import member2 from '../assets/member_2.jpeg';
 import member3 from '../assets/member_3.jpeg';
 import member4 from '../assets/member_4.jpeg';
-import productImg from '../assets/product.png';
 
 const teamMembers = [
     { name: 'Rapolas Daugelis', role: 'Mechanical Engineer', img: member1 },
@@ -17,7 +16,7 @@ const teamMembers = [
 ];
 ---
 
-<MainLayout title="Last Minuters">
+<MainLayout title="About | Project Aether">
     <section class="relative pt-32 pb-20 overflow-hidden">
         <div class="absolute -top-24 -left-24 w-96 h-96 bg-indigo-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
         <div class="absolute top-0 -right-24 w-96 h-96 bg-blue-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
@@ -29,50 +28,29 @@ const teamMembers = [
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
         </span>
-        Spring 2026 Project
+        About Our Team
       </span>
 
             <h1 class="text-5xl md:text-7xl font-black text-slate-900 tracking-tight mb-6">
-                Last <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-500">Minuters</span>
+                The Last Minuters
             </h1>
 
             <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-10">
-                Working with <strong>Rand Water</strong> to solve <strong>vandalism</strong>. We reduce theft by replacing valuable metal components with durable alternatives.
+                We’re a student team focused on practical, low-cost infrastructure solutions.
+                Our 2026 project works with Rand Water to address vandalism affecting water meters.
             </p>
-
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="/about" class="w-full sm:w-auto px-8 py-4 bg-slate-900 text-white font-bold rounded-2xl hover:bg-slate-800 transition-all shadow-xl shadow-indigo-200/50 hover:-translate-y-1">
-                    Explore Research
-                </a>
-                <a href="/downloads" class="w-full sm:w-auto px-8 py-4 bg-white text-slate-900 font-bold rounded-2xl border border-slate-200 hover:bg-slate-50 transition-all hover:-translate-y-1">
-                    Download Files
-                </a>
-            </div>
         </div>
     </section>
-
-    <div class="max-w-5xl mx-auto px-4">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-y border-slate-100">
-            { [
-                { label: 'Case Studies', val: '14' },
-                { label: 'Data Points', val: '1.2k' },
-                { label: 'Accuracy', val: '98%' },
-                { label: 'Prototypes', val: '4' }
-            ].map(stat => (
-                    <div class="text-center group">
-                        <div class="text-4xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors">{stat.val}</div>
-                        <div class="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">{stat.label}</div>
-                    </div>
-            ))}
-        </div>
-    </div>
 
     <section class="max-w-5xl mx-auto px-4 py-24">
         <div class="grid md:grid-cols-2 gap-16 items-center">
             <div>
                 <h2 class="text-3xl font-bold text-slate-900 mb-6 italic">The Challenge</h2>
                 <p class="text-lg text-slate-600 mb-6 leading-relaxed">
-                    Rand Water faces a vandalism challenge: water meters are stolen for their metal parts, causing service disruption and repair costs. Our focus is reducing theft incentives while keeping meters reliable.
+                    Research conducted into water infrastructure vandalism in South Africa showed that one of the major drivers of such vandalism is illegal scrap metal harvesting. Metal is intrinsically valuable, making infrastructure a prime target for criminals.
+                </p>
+                <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                    While water providers have been working to reduce the share of metal in heavily stolen parts, not all components have been successfully replaced. Our team identified that the <strong>isolating valves of water metres</strong>—often made of brass—are a critical vulnerability.
                 </p>
                 <div class="space-y-4">
                     <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
@@ -80,8 +58,8 @@ const teamMembers = [
                             <svg class="w-5 h-5" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         </div>
                         <div>
-                            <h4 class="font-bold">Vandalism & Theft</h4>
-                            <p class="text-sm text-slate-500">Meters are targeted because metal components have resale value.</p>
+                            <h4 class="font-bold">Illegal Scrap Harvesting</h4>
+                            <p class="text-sm text-slate-500">Brass and metal valves are highly targeted due to their rapid resale value on the black market.</p>
                         </div>
                     </div>
                 </div>
@@ -89,12 +67,38 @@ const teamMembers = [
             <div class="relative group">
                 <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
                 <div class="relative h-80 bg-slate-100 rounded-3xl border border-slate-200 flex items-center justify-center overflow-hidden">
-                    <Image src={productImg} alt="Data Visualization" class="w-full h-full object-cover" />
+                    <Image src={productImg} alt="Field Research Image" class="w-full h-full object-cover" />
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="bg-slate-50 py-24">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-8">Our Solution</h2>
+            <p class="text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed mb-6">
+                Therefore, we designed an isolating valve to be made entirely out of plastic, replacing the brass and metal valves that are currently used the most. Our design is based on a commonly employed spherical plug or rotary ball mechanism. A perforated ball controls the liquid: when the bore aligns with the pipe, water flows freely; otherwise, it blocks the current.
+            </p>
+            <p class="text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed mb-12">
+                In our design, the ball is fused with a shaft, allowing the user to change water flow with high precision. The valve is angular, possessing a smooth 90-degree bend that helps reduce turbulence. Most crucially, an adjustable threaded plug is included to control the tightness of the ball and easily replace parts. Being 100% plastic, it serves as the perfect deterrent against vandalism in South Africa.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6 text-left">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-slate-900 mb-2">100% Plastic Design</h3>
+                    <p class="text-sm text-slate-500">Completely eliminates the resale value associated with traditional brass and metal valves, deterring scrap thieves.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-slate-900 mb-2">Angular Ball Mechanism</h3>
+                    <p class="text-sm text-slate-500">Features a smooth 90-degree twist fused with a precise shaft to easily control flow while effectively reducing water turbulence.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-slate-900 mb-2">Adjustable & Serviceable</h3>
+                    <p class="text-sm text-slate-500">Includes a threaded plug to manually control ball tightness and swap individual internal parts, increasing product longevity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="bg-slate-50 py-24">
         <div class="max-w-5xl mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold mb-12">The Minds Behind The Project</h2>
