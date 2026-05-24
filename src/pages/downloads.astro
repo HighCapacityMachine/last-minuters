@@ -1,0 +1,72 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+// Use Vite's import.meta.glob to fetch all files in the downloads directory
+// Using `?url` allows us to get the compiled public URL for downloading
+const files = import.meta.glob('../assets/downloads/*.*', { eager: true, query: '?url' });
+
+// Process the raw Vite object into an array we can map over
+const downloadList = Object.keys(files).map((filePath) => {
+    // Extract just the filename from the path
+    const fileName = filePath.split('/').pop() || 'Unknown File';
+
+    return {
+        name: fileName,
+        // Cast the default export to string to get the URL
+        url: (files[filePath] as { default: string }).default
+    };
+});
+
+// Sort the list alphabetically by file name
+downloadList.sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<MainLayout title="Downloads | The Last Minuters">
+    <section class="space-y-12">
+        <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600 mb-3">
+                Resources
+            </p>
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+                Download Portal
+            </h1>
+            <p class="text-lg text-slate-600">
+                Access official project files, documents, and resources here. All files are listed alphabetically for easy navigation.
+            </p>
+        </header>
+
+        {downloadList.length === 0 ? (
+                <div class="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-12 text-center">
+                    <p class="text-slate-500 font-medium">No files available for download yet.</p>
+                    <p class="text-sm text-slate-400 mt-1">Please add files to the <code>src/assets/downloads</code> folder.</p>
+                </div>
+        ) : (
+                <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                    {downloadList.map((file) => (
+                            <div class="flex items-center justify-between p-5 rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition-shadow group">
+                                <div class="flex items-center gap-3 overflow-hidden">
+                                    <div class="bg-indigo-50 text-indigo-600 p-3 rounded-xl shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="font-semibold text-slate-700 truncate" title={file.name}>
+                    {file.name}
+                </span>
+                                </div>
+                                <a
+                                        href={file.url}
+                                        download={file.name}
+                                        class="ml-4 shrink-0 rounded-full border border-slate-200 bg-slate-50 p-2 text-slate-500 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-colors"
+                                        title={`Download ${file.name}`}
+                                >
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                    ))}
+                </div>
+        )}
+    </section>
+</MainLayout>

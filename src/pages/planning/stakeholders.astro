@@ -1,5 +1,33 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
+
+const stakeholders = [
+    { no: 1, name: "Employees", category: "D", type: "Internal", needs: "Needs: Technical guidance & operational support. Requirements: Fair compensation, clear documentation.", view: "Critic", priority: "M", strategy: "Involve", implementation: "Provide on-demand technical assistance and operational briefs.", dueDate: "06-01-26", frequency: "On demand" },
+    { no: 2, name: "Customers & Utilities", category: "A", type: "External", needs: "Needs: Market demand alignment & product spec. Requirements: On-time delivery, quality metrics.", view: "Very critic", priority: "H", strategy: "Dialogue", implementation: "Facilitate structured focus groups and co-design workshops.", dueDate: "10-01-26", frequency: "Scheduled" },
+    { no: 3, name: "Organization Leadership", category: "A", type: "Internal", needs: "Needs: Capital funding & resource optimization. Requirements: Successful delivery, milestone reporting.", view: "Advocate", priority: "H", strategy: "Manage", implementation: "Establish a structured daily reporting governance framework.", dueDate: "06-01-26", frequency: "Daily" },
+    { no: 4, name: "Illicit Actors (Drug-Dealers)", category: "C", type: "External", needs: "Needs: Maintenance of unmonitored public spaces. Requirements: Interruption of illicit activities.", view: "Very critic", priority: "L", strategy: "Watch", implementation: "Coordinate site surveillance and design defenses with law enforcement.", dueDate: "09-28-26", frequency: "Periodically" },
+    { no: 5, name: "Federal government", category: "B", type: "External", needs: "Needs: Regulatory alignment & strategic grant funding. Requirements: Legal compliance, statutory reporting.", view: "Supporter", priority: "M", strategy: "Involve", implementation: "Submit standardized progress compliance reports.", dueDate: "09-28-26", frequency: "Periodically" },
+    { no: 6, name: "Home owners", category: "D", type: "External", needs: "Needs: Minimal service disruption & asset protection. Requirements: Quality assurance, reliable infrastructure.", view: "Supporter", priority: "H", strategy: "Dialogue", implementation: "Distribute critical project milestone updates via formal notices.", dueDate: "09-28-26", frequency: "Periodically" },
+    { no: 7, name: "Local Residents", category: "D", type: "External", needs: "Needs: Uninterrupted utility access & community safety. Requirements: Reassurance of durability.", view: "Advocate", priority: "H", strategy: "Dialogue", implementation: "Broadcast community-level milestone updates at key intervals.", dueDate: "09-28-26", frequency: "Periodically" },
+    { no: 8, name: "Investors", category: "A", type: "Internal", needs: "Needs: Financial oversight & risk mitigation. Requirements: Project ROI, transparent progress reports.", view: "Neutral", priority: "H", strategy: "Involve", implementation: "Conduct formal quarterly investor briefings and financial reviews.", dueDate: "07-13-26", frequency: "Quarterly" },
+    { no: 9, name: "Technical suppliers", category: "D", type: "Internal", needs: "Needs: Clear supply chain demands & forecasting. Requirements: Prompt payment, streamlined logistics.", view: "Supporter", priority: "H", strategy: "Involve", implementation: "Establish an on-demand technical data exchange pipeline.", dueDate: "07-13-26", frequency: "On demand" },
+    { no: 10, name: "Vandals", category: "A", type: "External", needs: "Needs: Destruction/theft of public utility components. Requirements: Mitigation of illicit activities.", view: "Very critic", priority: "H", strategy: "Watch", implementation: "Make the product undesirable to steal and physically hard.", dueDate: "10-19-26", frequency: "Frequently" },
+    { no: 11, name: "The unemployed", category: "C", type: "External", needs: "Needs: Economic opportunity & health. Requirements: Mitigation of public infrastructure deterioration.", view: "Critic", priority: "M", strategy: "Watch", implementation: "Implement localized public awareness campaigns regarding project benefits.", dueDate: "10-19-26", frequency: "Periodically" },
+    { no: 12, name: "Plumbers", category: "D", type: "Internal", needs: "Needs: Practical deployment protocols & expert training. Requirements: Fair compensation, manuals.", view: "Critic", priority: "M", strategy: "Involve", implementation: "Issue targeted operational updates during key deployment phases.", dueDate: "10-19-26", frequency: "Periodically" },
+    { no: 13, name: "Tourists", category: "C", type: "External", needs: "Needs: Unobtrusive infrastructure & aesthetic preservation. Requirements: Visually integrated, low-impact.", view: "Advocate", priority: "L", strategy: "Influence", implementation: "Deploy public signage and aesthetic/environmental impact notices.", dueDate: "11-23-26", frequency: "Frequently" },
+    { no: 14, name: "Teenagers", category: "D", type: "External", needs: "Needs: Constructive community engagement platforms. Requirements: Safe public spaces.", view: "Supporter", priority: "L", strategy: "Influence", implementation: "Release targeted public safety and community awareness campaigns.", dueDate: "11-23-26", frequency: "Scheduled" },
+    { no: 15, name: "Policemen", category: "B", type: "External", needs: "Needs: Inter-agency cooperation & site risk profiles. Requirements: Clear security protocols.", view: "Advocate", priority: "H", strategy: "Inform", implementation: "Share security logs and project timelines on demand.", dueDate: "09-28-26", frequency: "On demand" },
+    { no: 16, name: "Courts", category: "B", type: "External", needs: "Needs: Legal compliance documentation. Requirements: Statutory alignment, transparency.", view: "Supporter", priority: "M", strategy: "Inform", implementation: "Provide verified compliance portfolios during scheduled reviews.", dueDate: "09-28-26", frequency: "Periodically" },
+    { no: 17, name: "Human Rights organisations", category: "C", type: "External", needs: "Needs: Social equity & ethical infrastructure deployment. Requirements: Fair practices, clear impact.", view: "Advocate", priority: "M", strategy: "Inform", implementation: "Supply transparent social impact and project progress briefs.", dueDate: "11-23-26", frequency: "On demand" },
+    { no: 18, name: "The project team", category: "A", type: "Internal", needs: "Needs: Resource allocation & collaboration. Requirements: Transparent communication, role alignment.", view: "Advocate", priority: "H", strategy: "Involve", implementation: "Conduct daily stand-ups and active progress sharing.", dueDate: "06-01-26", frequency: "Daily" },
+    { no: 19, name: "Public Media", category: "C", type: "External", needs: "Needs: Public interest stories & accurate info. Requirements: Transparent press releases.", view: "Neutral", priority: "L", strategy: "Manage", implementation: "Issue official corporate press releases regarding major milestones.", dueDate: "08-24-26", frequency: "Quarterly" },
+    { no: 20, name: "Local government officials", category: "B", type: "External", needs: "Needs: Municipal alignment & regional funding. Requirements: Zoning compliance, public welfare.", view: "Supporter", priority: "M", strategy: "Inform", implementation: "Deliver high-level executive briefs on project milestones.", dueDate: "06-01-26", frequency: "Quarterly" },
+];
+
+const lowPowerLowInterest = ['Employees', 'Plumbers', 'Teenagers', 'Technical suppliers', 'Home owners', 'Local Residents'];
+const highPowerLowInterest = ['Federal government', 'Policemen', 'Courts', 'Local government officials'];
+const lowPowerHighInterest = ['Illicit Actors (Drug-Dealers)', 'The unemployed', 'Tourists', 'Human Rights organisations', 'Public Media'];
+const highPowerHighInterest = ['Customers & Utilities', 'Organization Leadership', 'Investors', 'Vandals', 'The project team'];
 ---
 
 <MainLayout title="Stakeholders">
@@ -9,96 +37,111 @@ import MainLayout from '../../layouts/MainLayout.astro';
                 Planning
             </p>
             <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
-                Stakeholders
+                Stakeholders & Communication
             </h1>
             <p class="text-lg text-slate-600">
-                The project affects a wide range of stakeholders. Below is a power‑interest matrix that
-                groups each party based on their influence and interest in the outcome.
+                A comprehensive view of project stakeholders including our structural analysis and a detailed communication strategy framework to manage alignment.
             </p>
         </header>
 
-        <div class="grid gap-6 md:grid-cols-2">
-            <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h2 class="text-lg font-bold text-slate-900 mb-2">Stakeholder List</h2>
-                <p class="text-slate-600 mb-4">All identified stakeholders:</p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">Employees</span>
-                    <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">Customers</span>
-                    <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">Organization</span>
-                    <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">Drug-dealers</span>
-                    <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">Government</span>
-                    <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">Citizens</span>
-                    <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">Investors</span>
-                    <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">Technical suppliers</span>
-                    <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">Vandals</span>
-                    <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">The unemployed</span>
-                    <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">Plumbers</span>
-                    <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">Tourists</span>
-                    <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">Teenagers</span>
-                    <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">Policemen</span>
-                    <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">Courts</span>
-                    <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">Human Rights organisations</span>
-                    <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">Project team</span>
-                </div>
-            </article>
-
-            <article class="rounded-2xl border border-indigo-200 bg-indigo-50 p-6 shadow-sm">
-                <h2 class="text-lg font-bold text-slate-900 mb-2">Matrix Explanation</h2>
-                <p class="text-slate-700">
-                    The matrix groups stakeholders by <strong>Power</strong> (ability to influence outcomes)
-                    and <strong>Interest</strong> (level of concern about the project). This helps prioritize
-                    engagement and communication strategies.
-                </p>
-            </article>
-        </div>
-
         <section class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
             <h2 class="text-2xl font-bold text-slate-900 mb-6">Power–Interest Matrix</h2>
-
             <div class="grid gap-6 md:grid-cols-2">
                 <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
                     <p class="text-xs uppercase tracking-[0.2em] text-slate-500 mb-2">Low Power • Low Interest</p>
-                    <h3 class="text-lg font-bold text-slate-900 mb-3">Monitor</h3>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">Monitor / Influence</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">Employees</span>
-                        <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">Technical suppliers</span>
-                        <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">Plumbers</span>
-                        <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">Teenagers</span>
+                        {lowPowerLowInterest.map(s => (
+                                <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">{s}</span>
+                        ))}
                     </div>
                 </div>
 
                 <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
                     <p class="text-xs uppercase tracking-[0.2em] text-slate-500 mb-2">High Power • Low Interest</p>
-                    <h3 class="text-lg font-bold text-slate-900 mb-3">Keep Satisfied</h3>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">Keep Satisfied / Inform</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">Government</span>
-                        <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">Courts</span>
-                        <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">Policemen</span>
+                        {highPowerLowInterest.map(s => (
+                                <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">{s}</span>
+                        ))}
                     </div>
                 </div>
 
                 <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
                     <p class="text-xs uppercase tracking-[0.2em] text-slate-500 mb-2">Low Power • High Interest</p>
-                    <h3 class="text-lg font-bold text-slate-900 mb-3">Keep Informed</h3>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">Keep Informed / Watch</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">Near residents (citizens)</span>
-                        <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">Drug-dealers</span>
-                        <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">The unemployed</span>
-                        <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">Tourists</span>
-                        <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">Human Rights organisations</span>
+                        {lowPowerHighInterest.map(s => (
+                                <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">{s}</span>
+                        ))}
                     </div>
                 </div>
 
                 <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
                     <p class="text-xs uppercase tracking-[0.2em] text-slate-500 mb-2">High Power • High Interest</p>
-                    <h3 class="text-lg font-bold text-slate-900 mb-3">Manage Closely</h3>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">Manage Closely / Involve</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">Customers</span>
-                        <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">Organization</span>
-                        <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">Investors</span>
-                        <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">Vandals</span>
+                        {highPowerHighInterest.map(s => (
+                                <span class="rounded-full bg-white px-3 py-1 text-sm text-slate-700 border border-slate-200">{s}</span>
+                        ))}
                     </div>
                 </div>
+            </div>
+        </section>
+        <section class="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+            <div class="p-6 border-b border-slate-200 bg-slate-50">
+                <h2 class="text-xl font-bold text-slate-900">Communication & Management Strategy</h2>
+            </div>
+            <div class="overflow-x-auto min-w-[900px]">
+                <table class="w-full border-collapse text-left text-sm">
+                    <thead>
+                    <tr class="bg-white text-slate-700 border-b border-slate-200">
+                        <th class="px-4 py-3 font-semibold">Stakeholder</th>
+                        <th class="px-3 py-3 font-semibold text-center">Type</th>
+                        <th class="px-4 py-3 font-semibold w-1/3">Need / Requirement</th>
+                        <th class="px-3 py-3 font-semibold text-center">Priority</th>
+                        <th class="px-4 py-3 font-semibold text-center">Strategy</th>
+                        <th class="px-4 py-3 font-semibold w-1/3">Implementation Action</th>
+                        <th class="px-4 py-3 font-semibold">Frequency</th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-slate-700">
+                    {stakeholders.map((col) => {
+                        const badgeColors = {
+                            Involve: 'bg-blue-100 text-blue-800 border-blue-200',
+                            Manage: 'bg-indigo-100 text-indigo-800 border-indigo-200',
+                            Dialogue: 'bg-purple-100 text-purple-800 border-purple-200',
+                            Inform: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+                            Influence: 'bg-amber-100 text-amber-800 border-amber-200',
+                            Watch: 'bg-red-100 text-red-800 border-red-200',
+                        };
+                        const stratColor = badgeColors[col.strategy as keyof typeof badgeColors] || 'bg-slate-100 text-slate-800 border-slate-200';
+
+                        const priorityColor = col.priority === 'H' ? 'text-red-600 font-bold' : col.priority === 'M' ? 'text-amber-600 font-bold' : 'text-emerald-600 font-bold';
+
+                        return (
+                                <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50">
+                                    <td class="px-4 py-4 font-semibold text-slate-900">{col.name}</td>
+                                    <td class="px-3 py-4 text-center">
+                                        <span class={`text-[10px] uppercase font-bold tracking-wider rounded-sm px-1.5 py-0.5 ${col.type === 'Internal' ? 'bg-slate-800 text-white' : 'bg-slate-200 text-slate-600'}`}>{col.type}</span>
+                                    </td>
+                                    <td class="px-4 py-4 text-slate-500 leading-relaxed text-xs">{col.needs}</td>
+                                    <td class={`px-3 py-4 text-center ${priorityColor}`}>{col.priority}</td>
+                                    <td class="px-4 py-4 text-center">
+                                        <span class={`rounded-full border px-2.5 py-0.5 text-xs font-bold ${stratColor}`}>
+                                            {col.strategy}
+                                        </span>
+                                    </td>
+                                    <td class="px-4 py-4 text-slate-600 text-xs">
+                                        <div class="mb-1">{col.implementation}</div>
+                                        <div class="text-slate-400">Due: <span class="font-medium text-slate-500">{col.dueDate}</span></div>
+                                    </td>
+                                    <td class="px-4 py-4 text-slate-500 text-xs font-medium">{col.frequency}</td>
+                                </tr>
+                        );
+                    })}
+                    </tbody>
+                </table>
             </div>
         </section>
     </section>

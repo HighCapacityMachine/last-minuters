@@ -1,14 +1,28 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import { Image } from 'astro:assets';
+
+// Note: Astro requires these files to exist in src/assets/ for compilation to work
+import member1 from '../assets/member_1.jpeg';
+import member2 from '../assets/member_2.jpeg';
+import member3 from '../assets/member_3.jpeg';
+import member4 from '../assets/member_4.jpeg';
+
+const teamMembers = [
+    { name: 'Rapolas Daugelis', role: 'Mechanical Engineer', img: member1 },
+    { name: 'Greta Stundžytė', role: 'Economics | Team leader', img: member2 },
+    { name: 'Mantė Vėželytė', role: 'Materials Scientist', img: member3 },
+    { name: 'Daumantas Baltakis', role: 'Software Engineer', img: member4 }
+];
 ---
 
 <MainLayout title="Last Minuters">
-  <section class="relative pt-32 pb-20 overflow-hidden">
-    <div class="absolute -top-24 -left-24 w-96 h-96 bg-indigo-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
-    <div class="absolute top-0 -right-24 w-96 h-96 bg-blue-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
-    <div class="absolute -bottom-24 left-1/2 w-96 h-96 bg-pink-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+    <section class="relative pt-32 pb-20 overflow-hidden">
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-indigo-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+        <div class="absolute top-0 -right-24 w-96 h-96 bg-blue-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-24 left-1/2 w-96 h-96 bg-pink-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
 
-    <div class="relative max-w-5xl mx-auto px-4 text-center">
+        <div class="relative max-w-5xl mx-auto px-4 text-center">
       <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-8">
         <span class="relative flex h-2 w-2">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
@@ -16,89 +30,93 @@ import MainLayout from '../layouts/MainLayout.astro';
         </span>
         Spring 2026 Project
       </span>
-      
-      <h1 class="text-5xl md:text-7xl font-black text-slate-900 tracking-tight mb-6">
-          Last <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-500">Minuters</span>
-      </h1>
-      
-      <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-10">
-          Working with <strong>Rand Water</strong> to solve <strong>vandalism</strong>. We reduce theft by replacing valuable metal components with durable alternatives.
-      </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="/research" class="w-full sm:w-auto px-8 py-4 bg-slate-900 text-white font-bold rounded-2xl hover:bg-slate-800 transition-all shadow-xl shadow-indigo-200/50 hover:-translate-y-1">
-          Explore Research
-        </a>
-        <a href="/downloads" class="w-full sm:w-auto px-8 py-4 bg-white text-slate-900 font-bold rounded-2xl border border-slate-200 hover:bg-slate-50 transition-all hover:-translate-y-1">
-          Download Files
-        </a>
-      </div>
-    </div>
-  </section>
+            <h1 class="text-5xl md:text-7xl font-black text-slate-900 tracking-tight mb-6">
+                Last <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-500">Minuters</span>
+            </h1>
 
-  <div class="max-w-5xl mx-auto px-4">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-y border-slate-100">
-      { [
-        { label: 'Case Studies', val: '14' },
-        { label: 'Data Points', val: '1.2k' },
-        { label: 'Accuracy', val: '98%' },
-        { label: 'Prototypes', val: '4' }
-      ].map(stat => (
-        <div class="text-center group">
-          <div class="text-4xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors">{stat.val}</div>
-          <div class="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">{stat.label}</div>
-        </div>
-      ))}
-    </div>
-  </div>
+            <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-10">
+                Working with <strong>Rand Water</strong> to solve <strong>vandalism</strong>. We reduce theft by replacing valuable metal components with durable alternatives.
+            </p>
 
-  <section class="max-w-5xl mx-auto px-4 py-24">
-    <div class="grid md:grid-cols-2 gap-16 items-center">
-      <div>
-        <h2 class="text-3xl font-bold text-slate-900 mb-6 italic">The Challenge</h2>
-        <p class="text-lg text-slate-600 mb-6 leading-relaxed">
-            Rand Water faces a vandalism challenge: water meters are stolen for their metal parts, causing service disruption and repair costs. Our focus is reducing theft incentives while keeping meters reliable.
-        </p>
-        <div class="space-y-4">
-          <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
-            <div class="bg-indigo-600 text-white p-2 rounded-lg mt-1">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="/research" class="w-full sm:w-auto px-8 py-4 bg-slate-900 text-white font-bold rounded-2xl hover:bg-slate-800 transition-all shadow-xl shadow-indigo-200/50 hover:-translate-y-1">
+                    Explore Research
+                </a>
+                <a href="/downloads" class="w-full sm:w-auto px-8 py-4 bg-white text-slate-900 font-bold rounded-2xl border border-slate-200 hover:bg-slate-50 transition-all hover:-translate-y-1">
+                    Download Files
+                </a>
             </div>
+        </div>
+    </section>
+
+    <div class="max-w-5xl mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-y border-slate-100">
+            { [
+                { label: 'Case Studies', val: '14' },
+                { label: 'Data Points', val: '1.2k' },
+                { label: 'Accuracy', val: '98%' },
+                { label: 'Prototypes', val: '4' }
+            ].map(stat => (
+                    <div class="text-center group">
+                        <div class="text-4xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors">{stat.val}</div>
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">{stat.label}</div>
+                    </div>
+            ))}
+        </div>
+    </div>
+
+    <section class="max-w-5xl mx-auto px-4 py-24">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
             <div>
-                <h4 class="font-bold">Vandalism & Theft</h4>
-                <p class="text-sm text-slate-500">Meters are targeted because metal components have resale value.</p>
+                <h2 class="text-3xl font-bold text-slate-900 mb-6 italic">The Challenge</h2>
+                <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                    Rand Water faces a vandalism challenge: water meters are stolen for their metal parts, causing service disruption and repair costs. Our focus is reducing theft incentives while keeping meters reliable.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                        <div class="bg-indigo-600 text-white p-2 rounded-lg mt-1">
+                            <svg class="w-5 h-5" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Vandalism & Theft</h4>
+                            <p class="text-sm text-slate-500">Meters are targeted because metal components have resale value.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                <div class="relative h-80 bg-slate-100 rounded-3xl border border-slate-200 flex items-center justify-center overflow-hidden">
+                    <span class="text-slate-400 font-medium">[Data Visualization Image]</span>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="relative group">
-        <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-        <div class="relative h-80 bg-slate-100 rounded-3xl border border-slate-200 flex items-center justify-center overflow-hidden">
-            <span class="text-slate-400 font-medium">[Data Visualization Image]</span>
+    </section>
+
+    <section class="bg-slate-50 py-24">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-12">The Minds Behind The Project</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {teamMembers.map(member => (
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center">
+                            <Image
+                                    src={member.img}
+                                    alt={member.name}
+                                    class="w-16 h-16 rounded-full object-cover mx-auto mb-4 border-2 border-slate-100 shadow-sm"
+                            />
+                            <div class="font-bold text-slate-900">{member.name}</div>
+                            <div class="text-xs text-slate-500 uppercase mt-1 tracking-tighter">{member.role}</div>
+                        </div>
+                ))}
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="bg-slate-50 py-24">
-    <div class="max-w-5xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-12">The Minds Behind The Project</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {['Member A', 'Member B', 'Member C', 'Member D'].map(name => (
-          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-            <div class="w-16 h-16 bg-indigo-100 rounded-full mx-auto mb-4"></div>
-            <div class="font-bold text-slate-900">{name}</div>
-            <div class="text-xs text-slate-500 uppercase mt-1 tracking-tighter">Lead Researcher</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <footer class="py-20 text-center">
-    <p class="text-slate-400 text-sm mb-4">Ready to see the full results?</p>
-    <a href="/downloads" class="inline-flex items-center gap-2 text-indigo-600 font-bold hover:underline">
-      Access the Download Portal <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-    </a>
-  </footer>
+    <footer class="py-20 text-center">
+        <p class="text-slate-400 text-sm mb-4">Ready to see the full results?</p>
+        <a href="/downloads" class="inline-flex items-center gap-2 text-indigo-600 font-bold hover:underline">
+            Access the Download Portal <svg class="w-4 h-4" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+        </a>
+    </footer>
 </MainLayout>
